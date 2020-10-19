@@ -6,32 +6,34 @@ export const Container = styled.li`
     display: flex;
     list-style: none;
 
-    padding: 1.0rem;
-    margin: 0.05rem;
-
-    a {
-        text-decoration: none;
-        text-align: center;
-        display: flex;
-        justify-content: space-between;                
-    }
-
+    padding: 2.0rem;
+    margin: 0.05rem;    
+    
     :hover {
-        background: ${props => Colors.primary};
-        color: ${props => Colors.white};
+        background: ${props => Colors.white};
+        color: ${props => Colors.darkPrimary};
         cursor: pointer;
 
-        border-radius: 2.0rem;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+
+        transform: translate(2px, -2px);
 
         i {
-            color: ${props => Colors.white};
+            color: ${props => Colors.darkPrimary};
         }
 
         span {
-            color: ${props => Colors.white};
-        }
-    }
+            color: ${props => Colors.darkPrimary};
+        }        
+    }    
 
+`;
+
+export const Label = styled.span`
+    font-size: 1.8rem;
+    color: ${props => Colors.white};
+    margin-left: 1.4rem;
 `;
 
 export const Rota = styled.div`
@@ -43,5 +45,5 @@ export const Icon = styled.i`
     display: flex;
     align-items: center;
     font-size: 2.2rem;
-    color: ${props => Colors.primary};    
+    color: ${props => Colors.white};    
 `;

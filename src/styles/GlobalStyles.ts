@@ -35,4 +35,16 @@ export default createGlobalStyle`
             font-size: 50%;
         }
     }
+
+    a {
+        text-decoration: none;
+    }
+
+    .isActivedLink {
+        width: 100%;
+        display: flex;
+        list-style: none;
+
+        margin: 0.05rem;                
+    }
 `;

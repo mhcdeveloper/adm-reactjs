@@ -7,15 +7,15 @@ export const Container = styled.div`
     height: 100vh;
     background: ${props => Colors.fundo};
 
+    display: flex;
+    align-items: center;
 `;
 
 export const Wrapper  = styled.div`
-    height: 100%;
+    width: 1280px;    
     max-width: 1280px;
     margin: 0 auto;
     
     display: flex;
-    flex-direction: row;
-
-    background: ${props => Colors.white};
+    flex-direction: row;        
 `;

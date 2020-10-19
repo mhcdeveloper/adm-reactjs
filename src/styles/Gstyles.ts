@@ -131,19 +131,25 @@ export const Wrap = styled.div`
 `;
 
 //Inicio Botões
-export const Btn = styled.button<BtnProps>`
+export const Btn = styled.div<BtnProps>`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     ${props => props.width && `width: ${props.width};`}
-    background-color: ${props => props.color ? props.color : Colors.primary};
+    background-color: ${props => props.color ? props.color : Colors.transparent};
     padding-top: ${props => props.paddingTop ? props.paddingTop : '2.8%'};
     padding-right: ${props => props.paddingRight ? props.paddingRight : '2.8%'};
     padding-bottom: ${props => props.paddingBottom ? props.paddingBottom : '2.8%'};
     padding-left: ${props => props.paddingLeft ? props.paddingLeft : '2.8%'};
     margin: 2% 0 2% 0;
-    border-radius: 30px;
+
+    :hover {
+        cursor: pointer;
+        opacity: 0.6;
+
+        transform: translate(2px, 1px);
+    }
 `;
 
 //Inicio Labels

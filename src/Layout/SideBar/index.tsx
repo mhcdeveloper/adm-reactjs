@@ -2,19 +2,37 @@ import React, { useEffect, useState } from 'react';
 
 import Menu from './Menu';
 import { IMenu } from './Menu/IMenu';
-import { Container, NavBar, NavItem } from './styles';
+import { Brand, Container, NavBar, NavItem, Title } from './styles';
 
 const data = [
     {
         id: 1,
         label: "Dashboard",
         path: "/dashboard",
-        icon : "fas fa-tachometer-alt"
+        icon: "fas fa-tachometer-alt"
     },
     {
         id: 2,
+        label: "Produtos",
+        path: "/produtos",
+        icon: "fas fa-images"
+    },
+    {
+        id: 3,
+        label: "Colaboradores",
+        path: "/colaboradores",
+        icon: "fas fa-address-card"
+    },
+    {
+        id: 4,
+        label: "Parceiros",
+        path: "/parceiros",
+        icon: "fa fa-handshake"
+    },
+    {
+        id: 5,
         label: "Usuários",
-        path: "/usuairos",
+        path: "/usuarios",
         icon: "fas fa-users"
     },
 ]
@@ -44,6 +62,9 @@ const SideBar: React.FC = () => {
 
     return (
         <Container>
+            <Brand>
+                <Title>Melk</Title>
+            </Brand>
             {renderMenus()}
         </Container>
     );
