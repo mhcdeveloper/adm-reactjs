@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const Wrapper  = styled.div`
     height: 100%;
     max-width: 1280px;
-    /* margin: 0 auto; */
+    margin: 0 auto;
     
     display: flex;
     flex-direction: row;

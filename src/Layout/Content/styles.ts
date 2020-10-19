@@ -5,12 +5,12 @@ import Colors from "../../styles/Colors";
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    width: 75%;
+    width: 80%;
 
-    background: ${props => Colors.secondary};
+    background: ${props => Colors.lightFundo};
 `;
 
 export const Main = styled.div`
-    width: 75%;
-    scroll-behavior: auto;
+    width: 100%;
+    margin: 0.2rem auto;
 `;

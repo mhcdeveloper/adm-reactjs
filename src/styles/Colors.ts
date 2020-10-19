@@ -4,7 +4,8 @@ export default {
     primary: '#E91E63',
     secondary: '#757575',
     primaryText: '#252525',
-    fundo: '#EBEEF2',
+    fundo: '#B8D0FF',
+    lightFundo: '#EEF1FB',
     darkFundo: '#24272C',
     placeholder: '#FFF',
 

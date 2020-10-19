@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Content from './Content';
 import SideBar from './SideBar';
@@ -9,8 +10,10 @@ const Layout: React.FC = () => {
     return (
         <Container>
             <Wrapper>
-                <SideBar />                
-                <Content />
+                <Router>
+                    <SideBar />                
+                    <Content />
+                </Router>
             </Wrapper>
         </Container>
     );
