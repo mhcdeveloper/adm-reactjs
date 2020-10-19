@@ -12,7 +12,9 @@ interface Props {
 
 const IconBtn: React.FC<Props> = ({ label, icon, size, onSubmit }) => {
     return (
-        <Row>
+        <Row
+         marginLeft="1.0rem" 
+         marginRight="1.0rem">
             <Btn onClick={onSubmit}>
                 <Icon name={icon} size={size} />
                 {label && <Label>{label}</Label>}

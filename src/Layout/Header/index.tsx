@@ -13,6 +13,10 @@ const Header: React.FC = () => {
                     icon="far fa-bell"
                     size="2.5rem"
                     onSubmit={() => alert('ok')} />
+                <IconBtn 
+                    icon="far fa-user-circle"
+                    size="2.5rem"
+                    onSubmit={() => alert('ok')} />
             </UserInfo>
         </Container>
     );

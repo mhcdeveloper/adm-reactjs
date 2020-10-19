@@ -15,6 +15,12 @@ export const Container = styled.div`
     background: ${props => Colors.white};
     box-shadow: 1px 2px 5px #c9c9c9;
     border-top-right-radius: 2.8rem;
+
+    @media (max-width: 650px) {
+        border-top-right-radius: 0;
+        position: relative;
+        margin-top: 11rem;
+    }
 `;
 
 export const UserInfo = styled.div`

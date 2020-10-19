@@ -12,6 +12,18 @@ export const Container = styled.div`
     border-top-right-radius: 2.8rem;
     border-bottom-right-radius: 2.8rem;
     box-shadow: 5px 5px 5px #c9c9c9;
+
+    @media (max-width: 800px) {
+        width: 90%;
+        height: 100vh;
+
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    @media (max-width: 650px) {
+        width: 100%;
+    }
 `;
 
 export const Main = styled.div`

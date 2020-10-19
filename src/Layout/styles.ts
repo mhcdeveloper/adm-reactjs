@@ -18,4 +18,8 @@ export const Wrapper  = styled.div`
     
     display: flex;
     flex-direction: row;        
+
+    @media (max-width: 650px) {
+        flex-direction: column;
+    }
 `;

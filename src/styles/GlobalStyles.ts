@@ -24,7 +24,7 @@ export default createGlobalStyle`
     }
 
     //media queries
-    @media (max-width: 768px) {
+    @media (max-width: 975px) {
         html {
             font-size: 50%;
         }
@@ -38,13 +38,5 @@ export default createGlobalStyle`
 
     a {
         text-decoration: none;
-    }
-
-    .isActivedLink {
-        width: 100%;
-        display: flex;
-        list-style: none;
-
-        margin: 0.05rem;                
     }
 `;

@@ -6,9 +6,7 @@ import { Container, Icon, Rota, Label } from './styles';
 
 const Menu: React.FC<IMenu> = ({ label, path, icon }) => {    
     return (
-        <NavLink
-            to={path}
-            activeClassName="isActivedLink">
+        <NavLink to={path}>
             <Container>
                 {icon && <Icon className={icon} />}
                 <Rota>
