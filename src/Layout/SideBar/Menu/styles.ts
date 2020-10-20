@@ -6,12 +6,15 @@ export const Container = styled.li`
     display: flex;
     list-style: none;
 
-    padding: 2.0rem;
-    margin: 0.05rem;    
+    padding: 1.5rem;
+    margin: 0.15rem;    
     
     &:hover {
         background: ${props => Colors.white};
         color: ${props => Colors.darkPrimary};
+
+        margin-left: 0.5rem;
+
         cursor: pointer;
 
         border-top-left-radius: 20px;
@@ -28,6 +31,8 @@ export const Container = styled.li`
 
     @media (max-width: 650px) {        
         &:hover {
+            padding: 1.0rem;
+            margin-left: 0;
             background: ${props => Colors.white};
             color: ${props => Colors.darkPrimary};
             cursor: pointer;

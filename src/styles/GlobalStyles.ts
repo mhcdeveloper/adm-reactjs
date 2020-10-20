@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import Colors from './Colors';
 
 export default createGlobalStyle`
     * {
@@ -34,9 +35,35 @@ export default createGlobalStyle`
         html {
             font-size: 50%;
         }
+
+        .link-actived {
+            margin-left: 0;
+            
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
     }
 
     a {
         text-decoration: none;
+    }
+
+    .link-actived {
+        background: ${props => Colors.white};        
+        margin-left: 0.5rem;
+        
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;   
+    }
+
+    .link-actived span {
+        color: ${props => Colors.darkPrimary};
+        font-weight: 400;
+    }
+
+    .link-actived i {
+        color: ${props => Colors.darkPrimary};
     }
 `;

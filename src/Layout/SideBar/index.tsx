@@ -8,31 +8,31 @@ const data = [
     {
         id: 1,
         label: "Dashboard",
-        path: "/dashboard",
+        rota: { pathname: "/dashboard", state: "Dashboard" },
         icon: "fas fa-tachometer-alt"
     },
     {
         id: 2,
         label: "Produtos",
-        path: "/produtos",
+        rota: { pathname: "/produtos", state: "Produtos" },
         icon: "fas fa-images"
     },
     {
         id: 3,
         label: "Colaboradores",
-        path: "/colaboradores",
+        rota: { pathname: "/colaboradores", state: "Colaboradores" },
         icon: "fas fa-address-card"
     },
     {
         id: 4,
         label: "Parceiros",
-        path: "/parceiros",
+        rota: { pathname: "/parceiros", state: "Parceiros" },
         icon: "fa fa-handshake"
     },
     {
         id: 5,
         label: "Usuários",
-        path: "/usuarios",
+        rota: { pathname: "/usuarios", state: "Usuários" },
         icon: "fas fa-users"
     },
 ]
@@ -51,7 +51,7 @@ const SideBar: React.FC = () => {
                     {menus.map((menu: any, index: number) => (
                         <Menu
                             key={index}
-                            path={menu.path}
+                            rota={menu.rota}
                             label={menu.label}
                             icon={menu.icon} />
                     ))}

@@ -75,6 +75,6 @@ export const NavItem = styled.ul`
         justify-content: space-around;
         align-items: center;
 
-        margin-top: 0;
+        margin-top: .6rem;
     }
 `;

@@ -4,8 +4,7 @@ import { Container } from './styles';
 
 const Produtos: React.FC = () => {
   return (
-      <Container>
-
+      <Container>        
       </Container>
   );
 }
