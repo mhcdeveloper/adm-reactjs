@@ -21,10 +21,14 @@ const Header: React.FC = () => {
             <UserInfo>
                 <IconBtn 
                     icon="far fa-bell"
+                    background={Colors.white}
+                    color={Colors.primary}
                     size="2.5rem"
                     onSubmit={() => alert('ok')} />
                 <IconBtn 
                     icon="far fa-user-circle"
+                    background={Colors.white}
+                    color={Colors.primary}
                     size="2.5rem"
                     onSubmit={() => alert('ok')} />
             </UserInfo>

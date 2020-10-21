@@ -29,11 +29,13 @@ interface ContainerProps {
     paddingLeft?: string;
     color?: string;
     justify?: string;
+    border?: string;
 }
 
 interface BtnProps {
     width?: string;
     color?: string;
+    background?: string;
     paddingTop?: string;
     paddingRight?: string;
     paddingBottom?: string;
@@ -66,6 +68,7 @@ export const Center = styled.div<ContainerProps>`
     ${props => props.flex && `flex: ${props.flex};`}
     justify-content: center;
     align-items: center;
+    background-color: ${props => props.color ? props.color : Colors.transparent};
     margin-top: ${props => props.marginTop ? props.marginTop : '0px'};
     margin-right: ${props => props.marginRight ? props.marginRight : '0px'};
     margin-bottom: ${props => props.marginBottom ? props.marginBottom : '0px'};
@@ -80,6 +83,7 @@ export const Row = styled.div<ContainerProps>`
     display: flex;
     ${props => props.flex && `flex: ${props.flex};`}
     ${props => props.width && `width: ${props.width};`}
+    background-color: ${props => props.color ? props.color : Colors.transparent};
     flex-direction: row;
     justify-content: ${props => props.justify ? props.justify : 'center'};
     align-items: center;
@@ -91,6 +95,7 @@ export const Row = styled.div<ContainerProps>`
     padding-right: ${props => props.paddingRight ? props.paddingRight : '0px'};
     padding-bottom: ${props => props.paddingBottom ? props.paddingBottom : '0px'};
     padding-left: ${props => props.paddingLeft ? props.paddingLeft : '0px'};
+    border-radius: ${props => props.border ? props.border : '0px'};
 `;
 
 export const Col = styled.div<ContainerProps>`
@@ -137,7 +142,7 @@ export const Btn = styled.div<BtnProps>`
     justify-content: center;
     align-items: center;
     ${props => props.width && `width: ${props.width};`}
-    background-color: ${props => props.color ? props.color : Colors.transparent};
+    background-color: ${props => props.background ? props.background : Colors.transparent};
     padding-top: ${props => props.paddingTop ? props.paddingTop : '2.8%'};
     padding-right: ${props => props.paddingRight ? props.paddingRight : '2.8%'};
     padding-bottom: ${props => props.paddingBottom ? props.paddingBottom : '2.8%'};
