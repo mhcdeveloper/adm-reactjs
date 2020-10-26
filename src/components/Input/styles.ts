@@ -13,5 +13,9 @@ export const Container = styled.div`
         border-radius: 1.2rem;
         border-color: ${props => Colors.transparent};
         box-shadow: .2rem .2rem .30rem rgba(0, 0, 0, 0.4);
+
+        :focus {
+            outline: none !important;
+        }
     }    
 `;

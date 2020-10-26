@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { Btn, Label, Row } from '../../../styles/Gstyles';
 import Icon from '../../Icon';
+import { Container } from './styles';
+import { BtnG, LabelG } from '../../../styles/Gstyles';
 
 interface Props {
     label?: string;
@@ -14,17 +15,14 @@ interface Props {
 
 const IconBtn: React.FC<Props> = ({ label, icon, size, background, color, onSubmit }) => {
     return (
-        <Row
-            marginLeft="1.0rem"
-            marginRight="1.0rem"
-            color={background}
-            border="1.6rem">
-            <Btn
-                onClick={onSubmit}>
+        <Container 
+            onClick={onSubmit}
+            background={background}>
+            <BtnG>
                 <Icon name={icon} size={size} color={color} />
-                {label && <Label weight="bold" marginLeft=".8rem" color={color}>{label}</Label>}
-            </Btn>
-        </Row>
+                {label && <LabelG weight="bold" marginLeft=".8rem" color={color}>{label}</LabelG>}
+            </BtnG>
+        </Container>
     );
 }
 

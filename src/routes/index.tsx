@@ -5,7 +5,7 @@ import AuthContext from '../contexts';
 import Layout from '../Layout';
 import PublicRoutes from './PublicRoutes';
 
-const Routes = () => {
+const Routes = () => {    
     const [state, dispatch] = useReducer(
         (prevState: any, action: any) => {
             switch (action.type) {
@@ -22,7 +22,7 @@ const Routes = () => {
             }
         },
         {
-            authenticated: false,
+            authenticated: true,
             userToken: null,
         }
     );

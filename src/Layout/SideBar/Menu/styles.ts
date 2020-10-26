@@ -31,7 +31,7 @@ export const Container = styled.li`
 
     @media (max-width: 650px) {        
         &:hover {
-            padding: 1.0rem;
+            padding: 0;
             margin-left: 0;
             background: ${props => Colors.white};
             color: ${props => Colors.darkPrimary};
@@ -72,5 +72,9 @@ export const Icon = styled.i`
 
     @media (max-width: 650px) {
         font-size: 3rem;
+    }
+
+    @media (max-width: 260px) {
+        font-size: 2rem;
     }
 `;

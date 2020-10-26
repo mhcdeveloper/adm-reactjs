@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, RouteComponentProps } from 'react-router-dom';
+import { Redirect, Route, RouteComponentProps } from 'react-router-dom';
 
 import Dashboard from '../pages/Dashboard';
 import Parceiros from '../pages/Parceiros';
@@ -9,7 +9,7 @@ import Usuarios from '../pages/Usuarios';
 export class PrivateRoute extends Route {
     render() {
         return (
-            <Route render={(props: RouteComponentProps) => {                
+            <Route render={(props: RouteComponentProps) => {
                 if (this.props.component) {
                     return React.createElement(this.props.component);
                 }
@@ -22,26 +22,26 @@ export class PrivateRoute extends Route {
     }
 }
 
-const AuthRoutes = () => {    
+const AuthRoutes = () => {
     return (
         <>
             <PrivateRoute
-                exact                
+                exact
                 path="/dashboard"
                 component={Dashboard} />
             <PrivateRoute
-                exact                
+                exact
                 path="/produtos"
                 component={Produtos} />
             <PrivateRoute
-                exact                
+                exact
                 path="/parceiros"
                 component={Parceiros} />
             <PrivateRoute
-                exact                
+                exact
                 path="/usuarios"
                 component={Usuarios} />
-            <Route path="*" exact component={() => <h1>ok</h1>} />
+            <Redirect path="*" to="/" />
         </>
     )
 }

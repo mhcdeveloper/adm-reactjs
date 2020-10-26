@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import IconBtn from '../../components/Buttons/IconBtn';
 import Colors from '../../styles/Colors';
-import { Label } from '../../styles/Gstyles';
+import { LabelG } from '../../styles/Gstyles';
 import { Container, UserInfo } from './styles';
 
 const Header: React.FC = () => {
@@ -17,7 +17,7 @@ const Header: React.FC = () => {
 
     return (
         <Container>
-            <Label color={Colors.primary}>{pageTitle}</Label>
+            <LabelG color={Colors.primary}>{pageTitle}</LabelG>
             <UserInfo>
                 <IconBtn 
                     icon="far fa-bell"

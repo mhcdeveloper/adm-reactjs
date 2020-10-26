@@ -43,12 +43,12 @@ interface BtnProps {
 }
 
 //Inicio Containers
-export const SafeContainer = styled.div<ContainerProps>`
+export const SafeContainerG = styled.div<ContainerProps>`
     flex: 1;
     background-color: ${props => props.color ? props.color : Colors.transparent};
 `;
 
-export const Container = styled.div<ContainerProps>`
+export const ContainerG = styled.div<ContainerProps>`
     display: flex;
     ${props => props.flex && `flex: ${props.flex};`}
     ${props => props.justify && `justify-content: ${props.justify};`}
@@ -63,7 +63,7 @@ export const Container = styled.div<ContainerProps>`
     padding-left: ${props => props.paddingLeft ? props.paddingLeft : '0px'};
 `;
 
-export const Center = styled.div<ContainerProps>`
+export const CenterG = styled.div<ContainerProps>`
     display: flex;
     ${props => props.flex && `flex: ${props.flex};`}
     justify-content: center;
@@ -79,7 +79,7 @@ export const Center = styled.div<ContainerProps>`
     padding-left: ${props => props.paddingLeft ? props.paddingLeft : '0px'};
 `;
 
-export const Row = styled.div<ContainerProps>`
+export const RowG = styled.div<ContainerProps>`
     display: flex;
     ${props => props.flex && `flex: ${props.flex};`}
     ${props => props.width && `width: ${props.width};`}
@@ -98,7 +98,7 @@ export const Row = styled.div<ContainerProps>`
     border-radius: ${props => props.border ? props.border : '0px'};
 `;
 
-export const Col = styled.div<ContainerProps>`
+export const ColG = styled.div<ContainerProps>`
     display: flex;
     ${props => props.flex && `flex: ${props.flex};`}
     ${props => props.width && `width: ${props.width};`}
@@ -115,7 +115,7 @@ export const Col = styled.div<ContainerProps>`
     padding-left: ${props => props.paddingLeft ? props.paddingLeft : '0px'};
 `;
 
-export const Footer = styled.div<ContainerProps>`
+export const FooterG = styled.div<ContainerProps>`
     position: absolute;
     bottom: 0;
     right: 0;
@@ -127,7 +127,7 @@ export const Footer = styled.div<ContainerProps>`
     padding-left: ${props => props.paddingLeft ? props.paddingLeft : '2.8%'};
 `;
 
-export const Wrap = styled.div`
+export const WrapG = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -136,29 +136,22 @@ export const Wrap = styled.div`
 `;
 
 //Inicio Botões
-export const Btn = styled.div<BtnProps>`
+export const BtnG = styled.div<BtnProps>`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     ${props => props.width && `width: ${props.width};`}
     background-color: ${props => props.background ? props.background : Colors.transparent};
-    padding-top: ${props => props.paddingTop ? props.paddingTop : '2.8%'};
-    padding-right: ${props => props.paddingRight ? props.paddingRight : '2.8%'};
-    padding-bottom: ${props => props.paddingBottom ? props.paddingBottom : '2.8%'};
-    padding-left: ${props => props.paddingLeft ? props.paddingLeft : '2.8%'};
-    margin: 2% 0 2% 0;
-
-    :hover {
-        cursor: pointer;
-        opacity: 0.6;
-
-        transform: translate(2px, 1px);
-    }
+    padding-top: ${props => props.paddingTop ? props.paddingTop : '.8%'};
+    padding-right: ${props => props.paddingRight ? props.paddingRight : '.8%'};
+    padding-bottom: ${props => props.paddingBottom ? props.paddingBottom : '.8%'};
+    padding-left: ${props => props.paddingLeft ? props.paddingLeft : '.8%'};
+    margin: 2% 0 2% 0;    
 `;
 
 //Inicio Labels
-export const Label = styled.span<LabelProps>`
+export const LabelG = styled.span<LabelProps>`
     font-size: ${props => props.font ? props.font : '2.0rem'};
     font-weight: ${props => props.weight ? props.weight : '400'};
     color: ${props => props.color ? props.color : Colors.primaryText};
