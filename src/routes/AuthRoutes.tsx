@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route, RouteComponentProps } from 'react-router-dom';
+import { Redirect, Route, RouteComponentProps, Switch } from 'react-router-dom';
 
 import Dashboard from '../pages/Dashboard';
 import Parceiros from '../pages/Parceiros';
@@ -24,7 +24,7 @@ export class PrivateRoute extends Route {
 
 const AuthRoutes = () => {
     return (
-        <>
+        <Switch>
             <PrivateRoute
                 exact
                 path="/dashboard"
@@ -42,7 +42,7 @@ const AuthRoutes = () => {
                 path="/usuarios"
                 component={Usuarios} />
             <Redirect path="*" to="/" />
-        </>
+        </Switch>
     )
 }
 

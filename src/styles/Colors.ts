@@ -3,7 +3,7 @@ export default {
     darkPrimary: '#1976D2',
     primary: '#2196F3',
     secondary: '#FFC107',
-    primaryText: '#252525',    
+    primaryText: '#757575',    
     fundo: '#EEF1FB',
     lightFundo: '#EEF1FB',
     darkFundo: '#24272C',

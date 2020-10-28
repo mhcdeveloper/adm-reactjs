@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import Colors from "../../styles/Colors";
 
 export const Container = styled.div`
-    background: ${props => Colors.link};
+    width: 100%;
+    height: 80vh;
+    display: flex;
 `;
