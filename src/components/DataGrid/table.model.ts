@@ -4,12 +4,13 @@ export interface IDataGrid {
     rows: any;
 }
 
-export interface IColumn {
+export interface ITableHeader {
     title: string;
     field: string;
+    align: any;
 }
 
 export interface IRow {
     title: string;
-    field: string;
+    field: string;    
 }

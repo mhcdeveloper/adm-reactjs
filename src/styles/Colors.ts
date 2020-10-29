@@ -16,6 +16,7 @@ export default {
     black: '#000000',
     white: '#FFFFFF',
     green: '#00FF00',
+    red: '#D32F2F',
     error: '#D32F2F',
 
     facebook: '#2E56F6',

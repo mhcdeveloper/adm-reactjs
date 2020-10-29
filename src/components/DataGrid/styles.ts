@@ -21,14 +21,13 @@ export const Table = styled.table<Props>`
     td, th {
         padding: .6rem;
         border: 1px solid #ccc;
-        text-align: left;
     }
 
     td {
         font-size: 1.4rem;
         color: ${props => Colors.primaryText};
     }
-
+    
     @media (max-width: 760px), 
     (min-device-width: 768px) and (max-device-width: 1024px)  {        
 	    table, thead, tbody, th, td, tr { 
@@ -40,7 +39,7 @@ export const Table = styled.table<Props>`
             top: -9999px;
             left: -9999px;
         }
-	
+	    	
     	tr {  border: 1px solid #ccc; }
 	
         td { 
@@ -66,4 +65,32 @@ export const Table = styled.table<Props>`
         }}
 
     }
+`;
+
+export const Actions = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const BtnTable = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: ${props => props.color};
+
+    padding: .5rem .5rem;
+    margin: 0 .5rem 0 .5rem;
+    outline: none;
+    border-radius: 0.8rem;
+    border-color: transparent;
+    box-shadow: .3rem .3rem .3rem #cccccc;
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.6;
+
+        transform: translate(2px, 1px);
+    }
+
 `;

@@ -17,7 +17,7 @@ const Header: React.FC = () => {
 
     return (
         <Container>
-            <LabelG color={Colors.primary}>{pageTitle}</LabelG>
+            <LabelG weight="bold" color={Colors.primary}>{pageTitle}</LabelG>
             <UserInfo>
                 <IconBtn 
                     icon="far fa-bell"

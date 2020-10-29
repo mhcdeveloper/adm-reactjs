@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, Route, RouteComponentProps, Switch } from 'react-router-dom';
+import PageNotFound from '../components/PageNotFound';
 
 import Dashboard from '../pages/Dashboard';
 import Parceiros from '../pages/Parceiros';
@@ -41,7 +42,12 @@ const AuthRoutes = () => {
                 exact
                 path="/usuarios"
                 component={Usuarios} />
-            <Redirect path="*" to="/" />
+            <Route
+                exact
+                path="/404"
+                component={PageNotFound} />
+                
+            <Redirect path="*" to="/404" />
         </Switch>
     )
 }

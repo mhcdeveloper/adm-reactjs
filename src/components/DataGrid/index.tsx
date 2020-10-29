@@ -1,16 +1,18 @@
-import React from 'react';
-import { ContainerG, LabelG } from '../../styles/Gstyles';
+import React, { Fragment } from 'react';
+import { LabelG, RowG } from '../../styles/Gstyles';
 
-import { IDataGrid } from './table.model';
-import { Container, Table } from './styles';
+import { IDataGrid, ITableHeader } from './table.model';
+import { BtnTable, Container, Table, Actions } from './styles';
+import Colors from '../../styles/Colors';
+import Icon from '../Icon';
 
 const DataGrid: React.FC<IDataGrid> = ({ label, columns, rows }) => {
   const renderHeader = () => {
     return (
       <thead>
         <tr>
-          {columns.map((col: any, index: number) => (
-            <th key={index}>{col.title}</th>
+          {columns.map((col: ITableHeader, index: number) => (
+            <th key={index} style={{ textAlign: col.align }}>{col.title}</th>
           ))}
         </tr>
       </thead>
@@ -21,11 +23,29 @@ const DataGrid: React.FC<IDataGrid> = ({ label, columns, rows }) => {
     return (
       <tbody>
         {rows.map((row: any, index: number) => {
-          return <tr key={index}>
-            {columns.map((col: any, index: number) => (
-              <td key={index}>{row[col.field]}</td>
-            ))}
-          </tr>
+          return (
+            <tr key={index}>
+              {columns.map((col: any, index: number) => (
+                <Fragment key={index}>
+                  {col.field !== "action"
+                    ?
+                    <td style={{ textAlign: col.align }}>{row[col.field]}</td>
+                    :
+                    <td>
+                      <Actions>
+                        <BtnTable color={Colors.green}>
+                          <Icon name="fas fa-pencil-alt" size="1.8rem" color={Colors.white} />
+                        </BtnTable>
+                        <BtnTable color={Colors.red}>
+                          <Icon name="fas fa-trash" size="1.8rem" color={Colors.white} />
+                        </BtnTable>
+                      </Actions>
+                    </td>
+                  }
+                </Fragment>
+              ))}
+            </tr>
+          )
         })}
       </tbody>
     )
@@ -33,9 +53,13 @@ const DataGrid: React.FC<IDataGrid> = ({ label, columns, rows }) => {
 
   return (
     <Container>
-      <ContainerG marginLeft="0.2rem" marginBottom="1rem">
-        <LabelG font="1.8rem">{label}</LabelG>
-      </ContainerG>
+      <RowG justify="space-between">
+        <LabelG font="1.8rem">{label}</LabelG>        
+        <BtnTable color={Colors.primary}>
+          <Icon name="fas fa-plus" size="1.8rem" color={Colors.white} />
+          <LabelG font="1.6rem" color={Colors.white} paddingLeft=".5rem">Novo</LabelG>
+        </BtnTable>
+      </RowG>
       <Table columns={columns}>
         {renderHeader()}
         {renderBody()}
