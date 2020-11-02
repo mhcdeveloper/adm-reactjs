@@ -53,11 +53,11 @@ const DataGrid: React.FC<IDataGrid> = ({ label, columns, rows }) => {
 
   return (
     <Container>
-      <RowG justify="space-between">
+      <RowG justify="space-between" marginBottom="0.5rem">
         <LabelG font="1.8rem">{label}</LabelG>        
-        <BtnTable color={Colors.primary}>
-          <Icon name="fas fa-plus" size="1.8rem" color={Colors.white} />
-          <LabelG font="1.6rem" color={Colors.white} paddingLeft=".5rem">Novo</LabelG>
+        <BtnTable color={Colors.white}>
+          <Icon name="fas fa-plus" size="1.5rem" color={Colors.primary} />
+          <LabelG font="1.6rem" color={Colors.primary} paddingLeft=".5rem">Adicionar</LabelG>
         </BtnTable>
       </RowG>
       <Table columns={columns}>

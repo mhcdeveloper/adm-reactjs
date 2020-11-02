@@ -14,6 +14,7 @@ export const Container = styled.div<Props>`
     background: ${props => props.background ? props.background : Colors.primary};
     border-radius: 1.2rem;
 
+    transition: opacity 0.2s;
     :hover {
         cursor: pointer;
         opacity: 0.6;

@@ -43,7 +43,7 @@ const Usuarios: React.FC = () => {
 
   useEffect(() => {
     setRows(defaultRows);
-    setColumns(defaultColumns);
+    setColumns(defaultColumns);    
   }, []);
 
   return (

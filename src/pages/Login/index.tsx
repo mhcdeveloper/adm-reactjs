@@ -18,13 +18,17 @@ interface IError {
 
 const Login: React.FC = () => {
     let history = useHistory();
-    const { signIn } = useContext(AuthContext);
+    const { signIn, setLoading } = useContext(AuthContext);
     const formRef = useRef<FormHandles>(null);
 
     const handleSubmit: SubmitHandler<FormData> = async (data) => {
         try {
-            signIn();
-            history.push('/');
+            setLoading();
+            setTimeout(() => {
+                setLoading();
+                signIn();
+                history.push('/dasboard');            
+            }, 3000);
             // formRef.current?.setErrors({});
             // const schema = Yup.object().shape({
             //     dsemalog: Yup.string().email('Formato do e-mail inválido').required('E-mail é obrigatório'),
