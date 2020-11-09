@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import DataGrid from '../../components/DataGrid';
 import { ITableHeader } from '../../components/DataGrid/table.model';
+import Forms from '../../components/Forms';
+import { UsuarioModel } from '../../shared/models/UsuarioModel';
 import { Container } from './styles';
 
 const defaultColumns = [
@@ -48,6 +50,7 @@ const Usuarios: React.FC = () => {
 
   return (
     <Container>
+      <Forms inputs={UsuarioModel} label="Novo Usuário" />
       <DataGrid
         label="Lista de Usúarios"
         rows={rows}

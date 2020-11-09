@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import IconBtn from '../../components/Buttons/IconBtn';
 import Colors from '../../styles/Colors';
 import { LabelG } from '../../styles/Gstyles';
 import { Container, ItemMenu, MenuHeader } from './styles';
+import { logout } from '../../services/authService';
+import AuthContext from '../../contexts';
 
 const Header: React.FC = () => {
+    const { signOut, setLoading } = useContext(AuthContext);
     let location = useLocation();
     const [ pageTitle, setPageTitle ] = useState<String | any>('');
 
@@ -14,6 +17,14 @@ const Header: React.FC = () => {
         const { state } = location;
         setPageTitle(state);
     }, [location]);
+
+    const handleLogout = async () => {
+        setLoading();
+        await logout().then(isLogout => {
+            setLoading();
+            signOut()
+        });
+    }
 
     return (
         <Container>
@@ -25,7 +36,7 @@ const Header: React.FC = () => {
                         background={Colors.white}
                         color={Colors.primary}
                         size="2.5rem"
-                        onSubmit={() => alert('ok')} />
+                        onSubmit={() => alert('Notificações')} />
                 </ItemMenu>
                 <ItemMenu>
                     <IconBtn 
@@ -33,7 +44,7 @@ const Header: React.FC = () => {
                         background={Colors.white}
                         color={Colors.primary}
                         size="2.5rem"
-                        onSubmit={() => alert('ok')} />
+                        onSubmit={() => handleLogout()} />
                 </ItemMenu>
             </MenuHeader>
         </Container>

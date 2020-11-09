@@ -9,36 +9,38 @@ import { CenterG, LabelG, RowG } from '../../styles/Gstyles';
 import Colors from '../../styles/Colors';
 import IconBtn from '../../components/Buttons/IconBtn';
 import AuthContext from '../../contexts';
-import { useHistory } from 'react-router-dom';
 import Logo from '../../components/Logo';
+import { login } from '../../services/authService';
 
 interface IError {
     [key: string]: any;
 }
 
 const Login: React.FC = () => {
-    let history = useHistory();
     const { signIn, setLoading } = useContext(AuthContext);
     const formRef = useRef<FormHandles>(null);
 
-    const handleSubmit: SubmitHandler<FormData> = async (data) => {
+    const handleSubmit: SubmitHandler<FormData> = async (data: any) => {
         try {
             setLoading();
-            setTimeout(() => {
+            formRef.current?.setErrors({});
+            const schema = Yup.object().shape({
+                email: Yup.string().email('Formato do e-mail inválido').required('E-mail é obrigatório'),
+                senha: Yup.string().min(4, 'A senha deve ter no minimo 4 caracteres').required('Senha é obrigatória')
+            });
+
+            await schema.validate(data, {
+                abortEarly: false,
+            });
+
+            await login(data).then(success => {
                 setLoading();
                 signIn();
-                history.push('/dasboard');            
-            }, 3000);
-            // formRef.current?.setErrors({});
-            // const schema = Yup.object().shape({
-            //     dsemalog: Yup.string().email('Formato do e-mail inválido').required('E-mail é obrigatório'),
-            //     dssenha: Yup.string().min(4, 'A senha deve ter no minimo 4 caracteres').required('Senha é obrigatória')
-            // });
-
-            // await schema.validate(data, {
-            //     abortEarly: false,
-            // });
+            }).catch(err => {
+                console.log('error')
+            })
         } catch (err) {
+            setLoading();
             const validationErrors: IError = {};
 
             if (err instanceof Yup.ValidationError) {
@@ -70,8 +72,16 @@ const Login: React.FC = () => {
                                     weight="bold"
                                     marginLeft="1.5rem"
                                     color={Colors.primary}>Login</LabelG>
-                                <Input name="email" placeholder="E-mail" />
-                                <Input name="senha" type="password" placeholder="Senha" />
+                                <Input 
+                                    label="E-mail"
+                                    name="email" 
+                                    type="email" 
+                                    required={true} />
+                                <Input 
+                                    label="Senha"
+                                    name="senha" 
+                                    type="password" 
+                                    required={true} />
                                 <IconBtn
                                     label="Entrar"
                                     size="2.5rem"

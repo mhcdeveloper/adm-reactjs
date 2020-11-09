@@ -6,7 +6,7 @@ import { Container } from './styles';
 const Dashboard: React.FC = () => {
     return (
         <Container>
-            <LabelG>ok</LabelG>
+            <LabelG>Dashboard</LabelG>
         </Container>
     );
 }

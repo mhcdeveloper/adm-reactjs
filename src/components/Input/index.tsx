@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
 
-import { Container } from './styles';
+import { Container, Error, Label } from './styles';
 
 interface Props {
     name: string;
@@ -23,15 +23,15 @@ const Input: React.FC<InputProps> = ({ name, label, ...rest }) => {
     }, [fieldName, registerField]);
     
     return (
-        <Container>
-            { label && <label htmlFor={fieldName}>{label}</label>}
+        <Container error={error}>
             <input
                 id={fieldName}
                 ref={inputRef}
                 defaultValue={defaultValue}
-                {...rest}
+                {...rest}                
             />
-            { error && <span>{error}</span>}
+            {label && <Label>{label}</Label>}
+            { error && <Error>{error}</Error>}
         </Container>
     );
 };
