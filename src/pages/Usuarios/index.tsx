@@ -48,9 +48,16 @@ const Usuarios: React.FC = () => {
     setColumns(defaultColumns);    
   }, []);
 
+  const handleForm = (data: any) => {
+    
+  }
+
   return (
     <Container>
-      <Forms inputs={UsuarioModel} label="Novo Usuário" />
+      <Forms 
+        onSubmit={handleForm}
+        inputs={UsuarioModel} 
+        label="Novo Usuário" />
       <DataGrid
         label="Lista de Usúarios"
         rows={rows}

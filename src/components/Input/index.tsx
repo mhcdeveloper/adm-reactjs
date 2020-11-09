@@ -24,13 +24,13 @@ const Input: React.FC<InputProps> = ({ name, label, ...rest }) => {
     
     return (
         <Container error={error}>
+            {label && <Label>{label}</Label>}
             <input
                 id={fieldName}
                 ref={inputRef}
                 defaultValue={defaultValue}
                 {...rest}                
-            />
-            {label && <Label>{label}</Label>}
+            />            
             { error && <Error>{error}</Error>}
         </Container>
     );

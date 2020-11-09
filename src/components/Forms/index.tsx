@@ -1,16 +1,15 @@
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
 import { SubmitHandler, FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
-import { Container } from './styles';
-import AuthContext from '../../contexts';
-import { LabelG } from '../../styles/Gstyles';
+import { Container, Content } from './styles';
+import { ContainerG, LabelG } from '../../styles/Gstyles';
 import Colors from '../../styles/Colors';
 import IconBtn from '../Buttons/IconBtn';
 import Input from '../Input';
 import { Iinput } from '../../shared/types/InputType';
-import { ValidationInputs } from './ValidationInput';
+// import { ValidationInputs } from './ValidationInput';
 
 interface IError {
     [key: string]: any;
@@ -19,33 +18,22 @@ interface IError {
 interface Props {
     inputs: Iinput[];
     label: string;
+    onSubmit: Function;
 }
 
-const Forms: React.FC<Props> = ({ inputs, label }) => {
-    const { setLoading } = useContext(AuthContext);
+const Forms: React.FC<Props> = ({ inputs, label, onSubmit }) => {
     const formRef = useRef<FormHandles>(null);
 
     const handleSubmit: SubmitHandler<FormData> = async (data: any) => {
         try {
-            setLoading();
-            let validation: any;
-            inputs.filter(input => input.required === true).map(input => {
-                const { name } = input;
-                let type = ValidationInputs(input);
-                validation = { ...validation, [name]: type }
-                console.log(type)
-            });
-            console.log(validation)
-
             formRef.current?.setErrors({});
             const schema = Yup.object().shape({});
 
             await schema.validate(data, {
                 abortEarly: false,
             });
-            setLoading();
+            onSubmit(data);
         } catch (err) {
-            setLoading();
             const validationErrors: IError = {};
 
             if (err instanceof Yup.ValidationError) {
@@ -70,24 +58,29 @@ const Forms: React.FC<Props> = ({ inputs, label }) => {
                 placeholder={input.placeholder} />
         ))
     }
+
     return (
         <Container>
-            <LabelG
-                marginBottom="2.8rem"
-                font="2.6rem"
-                align="left"
-                weight="bold"
-                marginLeft="1.5rem"
-                color={Colors.primary}>{label}</LabelG>
-            <Form ref={formRef} onSubmit={handleSubmit}>
-                {renderInputs()}
-                <IconBtn
-                    label="Entrar"
-                    size="0.5rem"
-                    color={Colors.white}
-                    background={Colors.primary}
-                    onSubmit={() => formRef.current?.submitForm()} />
-            </Form>
+            <Content>
+                <ContainerG>
+                    <LabelG
+                        marginBottom="1.8rem"
+                        font="2.6rem"
+                        align="left"
+                        weight="bold"
+                        marginLeft="1.5rem"
+                        color={Colors.primary}>{label}</LabelG>
+                </ContainerG>
+                <Form ref={formRef} onSubmit={handleSubmit}>
+                    {renderInputs()}
+                    <IconBtn
+                        label="Salvar"
+                        size="0.5rem"
+                        color={Colors.white}
+                        background={Colors.primary}
+                        onSubmit={() => formRef.current?.submitForm()} />
+                </Form>
+            </Content>
         </Container>
     );
 }

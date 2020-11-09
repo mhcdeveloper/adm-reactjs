@@ -9,7 +9,7 @@ export const Container = styled.div<Props>`
     position: relative;
     width: 100%;
     height: 46px;
-    margin-bottom: 2.3rem;    
+    margin-bottom: 1.2rem;    
     
     input {
         position: absolute;
@@ -23,30 +23,24 @@ export const Container = styled.div<Props>`
         border-radius: 1.2rem;
         box-sizing: border-box;
         outline: none;
-        box-shadow: .2rem .2rem .30rem rgba(0, 0, 0, 0.4);
+        box-shadow: .2rem .2rem .30rem rgba(0, 0, 0, 0.2);
 
         font-size: 1.6rem;
         font-weight: 300;
-        color: ${props => Colors.primaryText};   
-
-        :focus ~ span,
-        :valid ~ span {
-            transform: translateX(-1rem) translateY(-3.2rem);
-        }
+        color: ${props => Colors.primaryText};          
     }    
 `;
 
-export const Label = styled.span`
+export const Label = styled.span`    
     position: absolute;
-    top: .1rem;
-    left: .1rem;
-    padding: 1rem;
-    display: inline-block;
-    font-size: 1.6rem;
-    color: ${props => Colors.primaryText};
+    top: -1rem;
+    left: .9rem;
+    padding: 0 .2rem 0 .2rem;
     font-weight: 300;
+    color: ${props => Colors.primaryText};
+    background: #fff;
     transition: 0.5s;     
-    pointer-events: none;  
+    z-index: 10;
 `;
 
 export const Error = styled.span`

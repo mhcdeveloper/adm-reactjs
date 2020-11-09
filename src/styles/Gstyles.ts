@@ -143,11 +143,11 @@ export const BtnG = styled.div<BtnProps>`
     align-items: center;
     ${props => props.width && `width: ${props.width};`}
     background-color: ${props => props.background ? props.background : Colors.transparent};
-    padding-top: ${props => props.paddingTop ? props.paddingTop : '.8%'};
-    padding-right: ${props => props.paddingRight ? props.paddingRight : '.8%'};
-    padding-bottom: ${props => props.paddingBottom ? props.paddingBottom : '.8%'};
-    padding-left: ${props => props.paddingLeft ? props.paddingLeft : '.8%'};
-    margin: 2% 0 2% 0;    
+    padding-top: ${props => props.paddingTop ? props.paddingTop : '0'};
+    padding-right: ${props => props.paddingRight ? props.paddingRight : '0'};
+    padding-bottom: ${props => props.paddingBottom ? props.paddingBottom : '0'};
+    padding-left: ${props => props.paddingLeft ? props.paddingLeft : '0'};
+    margin: 1.2rem 0 1.2rem 0;    
 `;
 
 //Inicio Labels

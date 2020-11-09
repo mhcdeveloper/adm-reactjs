@@ -23,7 +23,7 @@ export const UsuarioModel: Iinput[] = [
     { 
         name: 'email', 
         label: 'E-mail',
-        type: 'text', 
+        type: 'email', 
         required: true, 
         visible: true 
     },
