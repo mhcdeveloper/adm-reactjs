@@ -42,6 +42,16 @@ const defaultRows = [
 const Usuarios: React.FC = () => {
   const [rows, setRows] = useState<any>([]);
   const [columns, setColumns] = useState<ITableHeader[]>([]);
+  var atual = 600000.00;
+
+//com R$
+var f = atual.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+
+//sem R$
+var f2 = atual.toLocaleString('pt-br', {minimumFractionDigits: 2});
+
+console.log(f);
+console.log(f2);
 
   useEffect(() => {
     setRows(defaultRows);
