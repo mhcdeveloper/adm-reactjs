@@ -54,12 +54,12 @@ const Routes = () => {
 
     const getUser = async () => {
         await getUserToStorage().then(user => {
-            dispatch({ type: SIGN_IN });
+            if (user) dispatch({ type: SIGN_IN });
         });
     }
 
     const { loading, authenticated } = state;
-    
+
     return (
         <AuthContext.Provider value={authContext}>
             {loading && <Loading />}

@@ -63,7 +63,7 @@ const SideBar: React.FC = () => {
     return (
         <Container>
             <Brand>
-                <Title>Melk</Title>
+                <Title>Painel Adm</Title>
             </Brand>
             {renderMenus()}
         </Container>

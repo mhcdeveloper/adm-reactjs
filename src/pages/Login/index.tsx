@@ -3,7 +3,7 @@ import { SubmitHandler, FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
-import { Container, ContentForm, ContainerForm, Img, ContainerImg, LogoForm } from './styles';
+import { Container, ContentForm, ContainerForm, LogoForm } from './styles';
 import Input from '../../components/Input';
 import { CenterG, LabelG, RowG } from '../../styles/Gstyles';
 import Colors from '../../styles/Colors';
@@ -25,8 +25,8 @@ const Login: React.FC = () => {
             setLoading();
             formRef.current?.setErrors({});
             const schema = Yup.object().shape({
-                email: Yup.string().email('Formato do e-mail inválido').required('E-mail é obrigatório'),
-                senha: Yup.string().min(4, 'A senha deve ter no minimo 4 caracteres').required('Senha é obrigatória')
+                username: Yup.string().email('Formato do e-mail inválido').required('E-mail é obrigatório'),
+                password: Yup.string().min(4, 'A senha deve ter no mínimo 4 caracteres').required('Senha é obrigatória')
             });
 
             await schema.validate(data, {
@@ -37,7 +37,7 @@ const Login: React.FC = () => {
                 setLoading();
                 signIn();
             }).catch(err => {
-                console.log('error')
+                setLoading();
             })
         } catch (err) {
             setLoading();
@@ -47,7 +47,6 @@ const Login: React.FC = () => {
                 err.inner.forEach((error: any) => {
                     validationErrors[error.path] = error.message;
                 });
-
                 formRef.current?.setErrors(validationErrors);
             }
         }
@@ -64,23 +63,23 @@ const Login: React.FC = () => {
                             <Logo />
                         </LogoForm>
                         <ContentForm>
+                            <LabelG
+                                marginBottom="1.8rem"
+                                font="2.6rem"
+                                align="left"
+                                weight="bold"
+                                marginLeft="1.5rem"
+                                color={Colors.primary}>Login</LabelG>
                             <Form ref={formRef} onSubmit={handleSubmit}>
-                                <LabelG
-                                    marginBottom="1.8rem"
-                                    font="2.6rem"
-                                    align="left"
-                                    weight="bold"
-                                    marginLeft="1.5rem"
-                                    color={Colors.primary}>Login</LabelG>
-                                <Input 
+                                <Input
                                     label="E-mail"
-                                    name="email" 
-                                    type="email" 
+                                    name="username"
+                                    type="email"
                                     required={true} />
-                                <Input 
+                                <Input
                                     label="Senha"
-                                    name="senha" 
-                                    type="password" 
+                                    name="password"
+                                    type="password"
                                     required={true} />
                                 <IconBtn
                                     label="Entrar"
@@ -91,11 +90,6 @@ const Login: React.FC = () => {
                             </Form>
                         </ContentForm>
                     </ContainerForm>
-                    <ContainerImg>
-                        <Img>
-                            <Logo />
-                        </Img>
-                    </ContainerImg>
                 </RowG>
             </CenterG>
         </Container>

@@ -8,7 +8,7 @@ interface Props {
 export const Container = styled.div<Props>`    
     position: relative;
     width: 100%;
-    height: 46px;
+    height: 60px;
     margin-bottom: 1.2rem;    
     
     input {
@@ -16,7 +16,7 @@ export const Container = styled.div<Props>`
         top: 0;
         left: 0;
         width: 100%;
-        padding: 1.0rem;
+        padding: 1.5rem;
         
         border: 1px solid ${props => Colors.black};
         background: transparent;

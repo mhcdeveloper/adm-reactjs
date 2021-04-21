@@ -50,8 +50,8 @@ export const Brand = styled.div`
 `;
 
 export const Title = styled.strong`
-    font-size: 3.8rem;
-    font-weight: 700;
+    font-size: 2.8rem;
+    font-weight: 500;
     text-align: center;
 
     color: ${props => Colors.white};
