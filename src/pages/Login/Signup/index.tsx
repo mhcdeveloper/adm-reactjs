@@ -23,13 +23,19 @@ const Signup: React.FC = () => {
 
     const handleSubmit: SubmitHandler<FormData> = async (data: any) => {
         try {
+            console.log('entrou')
             setLoading();
             formRef.current?.setErrors({});
             const schema = Yup.object().shape({
                 nome: Yup.string().required('Nome é obrigatório'),
                 email: Yup.string().email('Formato do e-mail inválido').required('E-mail é obrigatório'),
-                password: Yup.string().min(6, 'A senha deve ter no mínimo 6 caracteres').required('Senha é obrigatória'),
-                perfils: Yup.array().required()
+                password: Yup.string()
+                    .min(6, 'A senha deve ter no mínimo 6 caracteres')
+                    .required('Senha é obrigatória'),
+                confirmPassword: Yup.string()
+                    .min(6, 'A confirmação da senha deve ter no mínimo 6 caracteres')
+                    .oneOf([Yup.ref('password'), 'Confirmação da senha está incorreta'])
+                    .required('Confirmação de senha é obrigatória')
             });
 
             await schema.validate(data, {

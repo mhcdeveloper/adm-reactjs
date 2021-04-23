@@ -9,12 +9,9 @@ export const Container = styled.div<Props>`
     position: relative;
     width: 100%;
     height: 60px;
-    margin-bottom: 1.2rem;    
+    margin-bottom: 2.8rem;    
     
     input {
-        position: absolute;
-        top: 0;
-        left: 0;
         width: 100%;
         padding: 1.5rem;
         
@@ -44,6 +41,8 @@ export const Label = styled.span`
 `;
 
 export const Error = styled.span`
+    position: relative;
+    top: .5rem;
     color: ${props => Colors.red};
     padding-left: 1.5rem;
 `;

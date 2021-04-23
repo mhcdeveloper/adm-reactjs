@@ -17,7 +17,7 @@ export const Container = styled.div`
 
 export const ContainerForm = styled.div`
     width: 35vw;
-    height: 80vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,7 +32,6 @@ export const ContainerForm = styled.div`
 
     @media (max-width: 600px) {
         width: 60vw;
-        height: 60vh;
         border-radius: 2rem;
     }
 

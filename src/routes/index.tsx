@@ -4,7 +4,8 @@ import Loading from '../components/Loading';
 
 import AuthContext from '../contexts';
 import Layout from '../Layout';
-import { getUserToStorage } from '../utils';
+import { API } from '../services/api';
+import { clearUserToStorage, getUserToStorage } from '../utils';
 import PublicRoutes from './PublicRoutes';
 import { LOADING, SIGN_IN, SIGN_OUT } from './Types';
 
@@ -50,7 +51,18 @@ const Routes = () => {
 
     useEffect(() => {
         getUser();
+        interceptor();
     }, []);
+
+    const interceptor = () => {
+        API.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
+            if (err.response.status === 401 || err.response.data.error === 'unauthorized') {
+                clearUserToStorage().then(_ => {
+                    dispatch({ type: SIGN_OUT })
+                });
+            }
+        });
+    }
 
     const getUser = async () => {
         await getUserToStorage().then(user => {
