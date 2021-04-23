@@ -36,6 +36,8 @@ const Header: React.FC = () => {
                         background={Colors.white}
                         color={Colors.primary}
                         size="2.5rem"
+                        paddingRight="1.5rem"
+                        paddingLeft="1.5rem"
                         onSubmit={() => alert('Notificações')} />
                 </ItemMenu>
                 <ItemMenu>
@@ -44,6 +46,8 @@ const Header: React.FC = () => {
                         background={Colors.white}
                         color={Colors.primary}
                         size="2.5rem"
+                        paddingRight="1.5rem"
+                        paddingLeft="1.5rem"
                         onSubmit={() => handleLogout()} />
                 </ItemMenu>
             </MenuHeader>

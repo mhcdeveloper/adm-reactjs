@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Colors from "../../styles/Colors";
+import Colors from "../../../styles/Colors";
 
 export const Container = styled.div`
     width: 100vw;
@@ -53,4 +53,11 @@ export const ContentForm = styled.div`
 
 export const LogoForm = styled.div`
     display: flex; 
+`;
+
+export const SignupBtn = styled.button`
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-top: 1.5rem;
 `;

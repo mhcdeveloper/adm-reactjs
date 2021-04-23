@@ -5,3 +5,10 @@ export interface IUserLogin {
     token?: string;
     perfil?: string;
 }
+
+export interface IUsuario {
+    nome: string;
+    email: string;
+    password: string;
+    perfil?: string;
+}

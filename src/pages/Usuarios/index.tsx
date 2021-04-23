@@ -1,57 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 import DataGrid from '../../components/DataGrid';
 import { ITableHeader } from '../../components/DataGrid/table.model';
 import Forms from '../../components/Forms';
+import AuthContext from '../../contexts';
 import { UsuarioModel } from '../../shared/models/UsuarioModel';
 import { buscarUsuarios } from './service';
 import { Container } from './styles';
 
 const defaultColumns = [
   { title: "Código", field: "id", align: "left" },
-  { title: "Nome", field: "name", align: "left" },
+  { title: "Nome", field: "nome", align: "left" },
   { title: "E-mail", field: "email", align: "left" },
-  { title: "Data Nascimento", field: "birthday", align: "left" },
   { title: "Data de Registro", field: "dtRegistro", align: "left" },
   { title: "Ações", field: "action", align: "center" }
 ]
 
-const defaultRows = [
-  {
-    id: "1",
-    name: "Marcos Henrique de Carvalho",
-    email: "mhcdeveloper@gmail.com",
-    birthday: "09/07/1993",
-    dtRegistro: "19/10/2020",
-  },
-  {
-    id: "2",
-    name: "Marcos Henrique de Carvalho",
-    email: "mhcdeveloper@gmail.com",
-    birthday: "09/07/1993",
-    dtRegistro: "19/10/2020",
-  },
-  {
-    id: "3",
-    name: "Marcos Henrique de Carvalho",
-    email: "mhcdeveloper@gmail.com",
-    birthday: "09/07/1993",
-    dtRegistro: "19/10/2020",
-  },
-]
-
 const Usuarios: React.FC = () => {
+  const { setLoading } = useContext(AuthContext);
   const [rows, setRows] = useState<any>([]);
-  const [columns, setColumns] = useState<ITableHeader[]>([]);
+  const [columns] = useState<ITableHeader[]>(defaultColumns);
 
-  useEffect(() => {
-    setRows(defaultRows);
-    setColumns(defaultColumns);
+  useEffect(() => {    
+    setLoading();
     buscarListaUsuarios();
   }, []);
 
   const buscarListaUsuarios = async () => {
-    await buscarUsuarios().then(dados => console.log(dados));
+    await buscarUsuarios().then(rows => {
+      setRows(rows);
+      setLoading();
+    })
+    .catch(_ => setLoading());
   }
 
   const handleForm = (data: any) => {
@@ -60,12 +40,12 @@ const Usuarios: React.FC = () => {
 
   return (
     <Container>
-      <Forms
+      {/* <Forms
         onSubmit={handleForm}
         inputs={UsuarioModel}
-        label="Novo Usuário" />
+        label="Novo Usuário" /> */}
       <DataGrid
-        label="Lista de Usúarios"
+        label="Lista de Usuários"
         rows={rows}
         columns={columns} />
     </Container>

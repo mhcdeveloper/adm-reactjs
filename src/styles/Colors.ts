@@ -1,10 +1,10 @@
 export default {
     transparent: 'rgba(0, 0, 0, 0)',
-    darkPrimary: '#1976D2',
-    primary: '#2196F3',
+    darkPrimary: '#7B1FA2',
+    primary: '#9C27B0',
     secondary: '#FFC107',
     primaryText: '#757575',    
-    fundo: '#EEF1FB',
+    fundo: '#E1BEE7',
     lightFundo: '#EEF1FB',
     darkFundo: '#24272C',
     placeholder: '#FFF',

@@ -9,16 +9,18 @@ interface Props {
     icon?: string;
     color: string;
     background: string;
+    paddingRight?: string;
+    paddingLeft?: string;
     size: string;
     onSubmit: () => void;
 }
 
-const IconBtn: React.FC<Props> = ({ label, icon, size, background, color, onSubmit }) => {
+const IconBtn: React.FC<Props> = ({ label, icon, size, background, color, onSubmit, paddingRight, paddingLeft }) => {
     return (
         <Container 
             onClick={onSubmit}
             background={background}>
-            <BtnG>
+            <BtnG paddingLeft={paddingLeft} paddingRight={paddingRight}>
                 <Icon name={icon} size={size} color={color} />
                 {label && <LabelG weight="bold" marginLeft=".8rem" color={color}>{label}</LabelG>}
             </BtnG>

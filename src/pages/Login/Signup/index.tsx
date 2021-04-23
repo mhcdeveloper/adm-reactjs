@@ -1,23 +1,24 @@
 import React, { useContext, useRef } from 'react';
 import { SubmitHandler, FormHandles } from '@unform/core';
+import { useHistory } from 'react-router-dom';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
-import { Container, ContentForm, ContainerForm, LogoForm } from './styles';
-import Input from '../../components/Input';
-import { CenterG, LabelG, RowG } from '../../styles/Gstyles';
-import Colors from '../../styles/Colors';
-import IconBtn from '../../components/Buttons/IconBtn';
-import AuthContext from '../../contexts';
-import Logo from '../../components/Logo';
-import { login } from '../../services/authService';
+import { Container, ContentForm, ContainerForm, LogoForm, BackBtn } from './styles';
+import AuthContext from '../../../contexts';
+import { CenterG, LabelG, RowG } from '../../../styles/Gstyles';
+import Colors from '../../../styles/Colors';
+import Input from '../../../components/Input';
+import IconBtn from '../../../components/Buttons/IconBtn';
+import { criarUsuario } from '../../../services/authService';
 
 interface IError {
     [key: string]: any;
 }
 
-const Login: React.FC = () => {
-    const { signIn, setLoading } = useContext(AuthContext);
+const Signup: React.FC = () => {
+    const history = useHistory();
+    const { setLoading } = useContext(AuthContext);
     const formRef = useRef<FormHandles>(null);
 
     const handleSubmit: SubmitHandler<FormData> = async (data: any) => {
@@ -25,17 +26,19 @@ const Login: React.FC = () => {
             setLoading();
             formRef.current?.setErrors({});
             const schema = Yup.object().shape({
-                username: Yup.string().email('Formato do e-mail inválido').required('E-mail é obrigatório'),
-                password: Yup.string().min(4, 'A senha deve ter no mínimo 4 caracteres').required('Senha é obrigatória')
+                nome: Yup.string().required('Nome é obrigatório'),
+                email: Yup.string().email('Formato do e-mail inválido').required('E-mail é obrigatório'),
+                password: Yup.string().min(6, 'A senha deve ter no mínimo 6 caracteres').required('Senha é obrigatória'),
+                perfils: Yup.array().required()
             });
 
             await schema.validate(data, {
                 abortEarly: false,
             });
 
-            await login(data).then(success => {
+            await criarUsuario(data).then(success => {
                 setLoading();
-                signIn();
+                history.push('signup')
             }).catch(err => {
                 setLoading();
             })
@@ -59,21 +62,33 @@ const Login: React.FC = () => {
                     width="100%"
                     justify="center">
                     <ContainerForm>
+                        <BackBtn>
+                            <IconBtn
+                                icon="fas fa-arrow-circle-left"
+                                background={Colors.white}
+                                color={Colors.primary}
+                                size="3.5rem"
+                                paddingRight="1.5rem"
+                                paddingLeft="1.5rem"
+                                onSubmit={() => history.goBack()} />
+                        </BackBtn>
                         <LogoForm>
-                            <Logo />
                         </LogoForm>
                         <ContentForm>
                             <LabelG
-                                marginBottom="1.8rem"
-                                font="2.6rem"
+                                marginBottom="2.8rem"
+                                font="3.5rem"
                                 align="left"
                                 weight="bold"
-                                marginLeft="1.5rem"
-                                color={Colors.primary}>Login</LabelG>
+                                color={Colors.primary}>Novo Usuário</LabelG>
                             <Form ref={formRef} onSubmit={handleSubmit}>
                                 <Input
+                                    label="Nome Completo"
+                                    name="nome"
+                                    required={true} />
+                                <Input
                                     label="E-mail"
-                                    name="username"
+                                    name="email"
                                     type="email"
                                     required={true} />
                                 <Input
@@ -81,8 +96,13 @@ const Login: React.FC = () => {
                                     name="password"
                                     type="password"
                                     required={true} />
+                                <Input
+                                    label="Confirmar Senha"
+                                    name="confirmPassword"
+                                    type="password"
+                                    required={true} />
                                 <IconBtn
-                                    label="Entrar"
+                                    label="Criar"
                                     size="2.5rem"
                                     color={Colors.white}
                                     background={Colors.primary}
@@ -96,4 +116,4 @@ const Login: React.FC = () => {
     );
 }
 
-export default Login;
+export default Signup;

@@ -31,5 +31,5 @@ export const MenuHeader = styled.div`
 `;
 
 export const ItemMenu = styled.div`
-    padding: 0 1rem 0 1rem;
+    padding: 0 .2rem 0 .2rem;
 `;

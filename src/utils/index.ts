@@ -1,5 +1,5 @@
 
-import { IUserLogin } from "../shared/types/UserLogin";
+import { IUserLogin } from "../shared/types/Login";
 import { USER_INFO } from "./conts";
 
 export const setUserToStorage = async (user: IUserLogin) => {
