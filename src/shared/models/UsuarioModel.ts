@@ -1,37 +1,67 @@
 import { Iinput } from "../types/InputType";
 
 export const UsuarioModel: Iinput[] = [
-    { 
-        name: 'id', 
-        type: 'numeric', 
-        required: false, 
-        visible: false 
+    {
+        id: 'id',
+        name: 'id',
+        type: 'numeric',
+        required: false,
+        visible: false
     },
-    { 
-        name: 'avatar', 
-        type: 'text', 
-        required: false, 
-        visible: false 
-    },
-    { 
-        name: 'name', 
+    {
+        id: 'nome',
+        name: 'nome',
         label: 'Nome',
-        type: 'text', 
-        required: true, 
-        visible: true 
+        type: 'text',
+        validationType: "string",
+        value: undefined,
+        required: true,
+        visible: true,
+        validations: [
+            {
+                type: "required",
+                params: ["Campo nome é obrigatório"]
+            },
+        ]
     },
-    { 
-        name: 'email', 
+    {
+        id: 'email',
+        name: 'email',
         label: 'E-mail',
-        type: 'email', 
-        required: true, 
-        visible: true 
+        type: 'text',
+        validationType: "string",
+        value: undefined,
+        required: true,
+        visible: true,
+        validations: [
+            {
+                type: "required",
+                params: ["Campo email é obrigatório"]
+            },
+            { 
+                type: "email", 
+                params: ["Campo email está com formato errado"]
+            }
+        ]
     },
-    { 
-        name: 'birthday', 
-        label: 'Data de Nascimento',
-        type: 'date', 
-        required: true, 
-        visible: true 
+    {
+        id: 'password',
+        name: 'password',
+        label: 'Senha',
+        type: 'password',
+        validationType: "string",
+        value: undefined,
+        required: true,
+        visible: true,
+        validations: [
+            {
+                type: "required",
+                params: ["Campo senha é obrigatório"]
+            },
+            { 
+                type: "min",
+                params: [6, "A senha deve ter no mínimo 6 caracteres"]
+            }
+        ]
     },
 ]

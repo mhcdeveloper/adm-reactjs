@@ -5,7 +5,8 @@ import { ITableHeader } from '../../components/DataGrid/table.model';
 import Forms from '../../components/Forms';
 import AuthContext from '../../contexts';
 import { UsuarioModel } from '../../shared/models/UsuarioModel';
-import { buscarUsuarios } from './service';
+import { toasteError, toasteSuccess } from '../../utils';
+import { buscarUsuarios, criarUsuario } from './service';
 import { Container } from './styles';
 
 const defaultColumns = [
@@ -21,29 +22,38 @@ const Usuarios: React.FC = () => {
   const [rows, setRows] = useState<any>([]);
   const [columns] = useState<ITableHeader[]>(defaultColumns);
 
-  useEffect(() => {    
-    setLoading();
+  useEffect(() => {
     buscarListaUsuarios();
   }, []);
 
   const buscarListaUsuarios = async () => {
+    setLoading();
     await buscarUsuarios().then(rows => {
       setRows(rows);
       setLoading();
     })
-    .catch(_ => setLoading());
+      .catch(_ => setLoading());
   }
 
-  const handleForm = (data: any) => {
-
+  const handleForm = async (usuarioNovo: any) => {
+    setLoading();
+    await criarUsuario(usuarioNovo).then(_ => {
+      setLoading();
+      toasteSuccess('Usuário criado com sucesso !');
+      buscarListaUsuarios();
+    }).catch(err => {
+      setLoading();
+      const mensagensErros = err.response.data.mensagens;
+      if (mensagensErros.length > 0) mensagensErros.map((e: string) => toasteError(e));
+    })
   }
 
   return (
     <Container>
-      {/* <Forms
+      <Forms
         onSubmit={handleForm}
         inputs={UsuarioModel}
-        label="Novo Usuário" /> */}
+        label="Novo Usuário" />
       <DataGrid
         label="Lista de Usuários"
         rows={rows}

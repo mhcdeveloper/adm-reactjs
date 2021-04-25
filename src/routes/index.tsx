@@ -55,12 +55,15 @@ const Routes = () => {
     }, []);
 
     const interceptor = () => {
-        API.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
+        API.interceptors.response.use(function (response) {
+            return response;
+        }, function (err) {
             if (err.response.status === 401 || err.response.data.error === 'unauthorized') {
                 clearUserToStorage().then(_ => {
                     dispatch({ type: SIGN_OUT })
                 });
             }
+            return Promise.reject(err);
         });
     }
 

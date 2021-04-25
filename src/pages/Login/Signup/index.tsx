@@ -23,7 +23,6 @@ const Signup: React.FC = () => {
 
     const handleSubmit: SubmitHandler<FormData> = async (data: any) => {
         try {
-            console.log('entrou')
             setLoading();
             formRef.current?.setErrors({});
             const schema = Yup.object().shape({

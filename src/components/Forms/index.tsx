@@ -9,7 +9,7 @@ import Colors from '../../styles/Colors';
 import IconBtn from '../Buttons/IconBtn';
 import Input from '../Input';
 import { Iinput } from '../../shared/types/InputType';
-// import { ValidationInputs } from './ValidationInput';
+import getValidationSchema from './ValidationInput';
 
 interface IError {
     [key: string]: any;
@@ -27,8 +27,7 @@ const Forms: React.FC<Props> = ({ inputs, label, onSubmit }) => {
     const handleSubmit: SubmitHandler<FormData> = async (data: any) => {
         try {
             formRef.current?.setErrors({});
-            const schema = Yup.object().shape({});
-
+            const schema = getValidationSchema(inputs);
             await schema.validate(data, {
                 abortEarly: false,
             });
