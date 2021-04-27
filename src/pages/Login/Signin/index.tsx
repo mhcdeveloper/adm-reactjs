@@ -12,6 +12,7 @@ import IconBtn from '../../../components/Buttons/IconBtn';
 import AuthContext from '../../../contexts';
 import Logo from '../../../components/Logo';
 import { login } from '../../../services/authService';
+import { toasteError } from '../../../utils';
 
 interface IError {
     [key: string]: any;
@@ -40,6 +41,7 @@ const Signin: React.FC = () => {
                 signIn();
             }).catch(err => {
                 setLoading();
+                toasteError("Não foi possivel fazer o login, verifique os dados informados");
             })
         } catch (err) {
             setLoading();
@@ -80,7 +82,7 @@ const Signin: React.FC = () => {
                                     label="Senha"
                                     name="password"
                                     type="password"
-                                    required={true} />                                
+                                    required={true} />
                                 <IconBtn
                                     label="Entrar"
                                     size="2.5rem"

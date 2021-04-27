@@ -10,4 +10,5 @@ export interface Iinput {
     placeholder?: string;
     validationType?: string;
     validations?: any
+    options?: any
 }

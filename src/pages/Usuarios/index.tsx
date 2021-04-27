@@ -5,7 +5,7 @@ import { ITableHeader } from '../../components/DataGrid/table.model';
 import Forms from '../../components/Forms';
 import AuthContext from '../../contexts';
 import { UsuarioModel } from '../../shared/models/UsuarioModel';
-import { toasteError, toasteSuccess } from '../../utils';
+import { setValuesForms, toasteError, toasteSuccess } from '../../utils';
 import { buscarUsuarios, criarUsuario } from './service';
 import { Container } from './styles';
 
@@ -20,6 +20,8 @@ const defaultColumns = [
 const Usuarios: React.FC = () => {
   const { setLoading } = useContext(AuthContext);
   const [rows, setRows] = useState<any>([]);
+  const [formModel, setFormModel] = useState(UsuarioModel);
+  const [showForm, setShowForm] = useState(false);
   const [columns] = useState<ITableHeader[]>(defaultColumns);
 
   useEffect(() => {
@@ -37,6 +39,10 @@ const Usuarios: React.FC = () => {
 
   const handleForm = async (usuarioNovo: any) => {
     setLoading();
+    let perfils = [];
+    perfils.push(usuarioNovo.perfils);
+    usuarioNovo.perfils = perfils;
+    console.log(usuarioNovo)
     await criarUsuario(usuarioNovo).then(_ => {
       setLoading();
       toasteSuccess('Usuário criado com sucesso !');
@@ -44,20 +50,37 @@ const Usuarios: React.FC = () => {
     }).catch(err => {
       setLoading();
       const mensagensErros = err.response.data.mensagens;
-      if (mensagensErros.length > 0) mensagensErros.map((e: string) => toasteError(e));
+      if (mensagensErros) mensagensErros.map((e: string) => toasteError(e));
     })
+  }
+
+  const editarRegistro = (row: any) => {
+    let model = setValuesForms(UsuarioModel, row);
+    setFormModel(model);
+    setShowForm(true);
+  }
+
+  const removerRegistro = (row: any) => {
+    console.log(row)
   }
 
   return (
     <Container>
-      <Forms
-        onSubmit={handleForm}
-        inputs={UsuarioModel}
-        label="Novo Usuário" />
-      <DataGrid
-        label="Lista de Usuários"
-        rows={rows}
-        columns={columns} />
+      {showForm ?
+        <Forms
+          onSubmit={handleForm}
+          inputs={formModel}
+          handleClose={() => setShowForm(false)}
+          label="Formulário do Usuário" />
+        :
+        <DataGrid
+          label="Lista de Usuários"
+          rows={rows}
+          showForm={() => setShowForm(true)}
+          edit={editarRegistro}
+          remove={removerRegistro}
+          columns={columns} />
+      }
     </Container>
   );
 }

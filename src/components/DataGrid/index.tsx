@@ -6,7 +6,7 @@ import { BtnTable, Container, Table, Actions } from './styles';
 import Colors from '../../styles/Colors';
 import Icon from '../Icon';
 
-const DataGrid: React.FC<IDataGrid> = ({ label, columns, rows }) => {
+const DataGrid: React.FC<IDataGrid> = ({ label, columns, rows, edit, remove, showForm }) => {
   const renderHeader = () => {
     return (
       <thead>
@@ -33,10 +33,10 @@ const DataGrid: React.FC<IDataGrid> = ({ label, columns, rows }) => {
                     :
                     <td>
                       <Actions>
-                        <BtnTable color={Colors.green}>
+                        <BtnTable color={Colors.green} onClick={() => edit(row)}>
                           <Icon name="fas fa-pencil-alt" size="1.8rem" color={Colors.white} />
                         </BtnTable>
-                        <BtnTable color={Colors.red}>
+                        <BtnTable color={Colors.red} onClick={() => remove(row)}>
                           <Icon name="fas fa-trash" size="1.8rem" color={Colors.white} />
                         </BtnTable>
                       </Actions>
@@ -55,7 +55,7 @@ const DataGrid: React.FC<IDataGrid> = ({ label, columns, rows }) => {
     <Container>
       <RowG justify="space-between" marginBottom="0.5rem">
         <LabelG font="1.8rem">{label}</LabelG>        
-        <BtnTable color={Colors.white}>
+        <BtnTable color={Colors.white} onClick={() => showForm()}>
           <Icon name="fas fa-plus" size="1.5rem" color={Colors.primary} />
           <LabelG font="1.6rem" color={Colors.primary} paddingLeft=".5rem">Adicionar</LabelG>
         </BtnTable>

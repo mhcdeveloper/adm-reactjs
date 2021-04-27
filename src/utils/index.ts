@@ -33,3 +33,10 @@ export const toasteError = (msg: string) => {
 export const toasteWarnning = (msg: string) => {
     return toast.warning(msg);
 }
+
+export const setValuesForms = (model: any, row: any) => {
+    return model.map((m: any) => {
+        m.value = row[m.id];
+        return m;
+    })
+}

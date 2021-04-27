@@ -7,7 +7,6 @@ export const Container = styled.div`
     align-items: center;
     width: 100%;
     
-    background: ${props => Colors.white};
     z-index: 100;
 `;
 

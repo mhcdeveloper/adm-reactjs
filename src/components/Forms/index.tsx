@@ -10,18 +10,20 @@ import IconBtn from '../Buttons/IconBtn';
 import Input from '../Input';
 import { Iinput } from '../../shared/types/InputType';
 import getValidationSchema from './ValidationInput';
+import AsyncSelect from '../SelectInput';
 
 interface IError {
     [key: string]: any;
 }
-
 interface Props {
     inputs: Iinput[];
     label: string;
     onSubmit: Function;
+    handleClose: Function;
 }
 
-const Forms: React.FC<Props> = ({ inputs, label, onSubmit }) => {
+const Forms: React.FC<Props> = ({ inputs, label, onSubmit, handleClose }) => {
+    console.log(inputs)
     const formRef = useRef<FormHandles>(null);
 
     const handleSubmit: SubmitHandler<FormData> = async (data: any) => {
@@ -47,15 +49,29 @@ const Forms: React.FC<Props> = ({ inputs, label, onSubmit }) => {
 
     const renderInputs = () => {
         let visibleInputs = inputs.filter(input => input.visible === true);
-        return visibleInputs.map((input: Iinput, index: number) => (
-            <Input
-                key={index}
-                name={input.name}
-                label={input.label}
-                required={input.required}
-                type={input.type}
-                placeholder={input.placeholder} />
-        ))
+        return visibleInputs.map((input: Iinput, index: number) => {
+            if (input.type === 'select') {
+                return (
+                    <AsyncSelect
+                        key={index}
+                        name={input.name}
+                        placeholder={input.placeholder}
+                        options={input.options}
+                        defaultValue={input.value}
+                    />
+                )
+            }
+            return (
+                <Input
+                    key={index}
+                    name={input.name}
+                    label={input.label}
+                    required={input.required}
+                    type={input.type}
+                    defaultValue={input.value}
+                    placeholder={input.placeholder} />
+            )
+        })
     }
 
     return (
@@ -64,7 +80,7 @@ const Forms: React.FC<Props> = ({ inputs, label, onSubmit }) => {
                 <ContainerG>
                     <LabelG
                         marginBottom="1.8rem"
-                        font="2.6rem"
+                        font="2.3rem"
                         align="left"
                         weight="bold"
                         marginLeft="1.5rem"
@@ -78,6 +94,12 @@ const Forms: React.FC<Props> = ({ inputs, label, onSubmit }) => {
                         color={Colors.white}
                         background={Colors.primary}
                         onSubmit={() => formRef.current?.submitForm()} />
+                    <IconBtn
+                        label="Cancelar"
+                        size="0.5rem"
+                        color={Colors.white}
+                        background={Colors.secondary}
+                        onSubmit={() => handleClose()} />
                 </Form>
             </Content>
         </Container>
