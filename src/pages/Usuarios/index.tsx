@@ -6,7 +6,7 @@ import Forms from '../../components/Forms';
 import AuthContext from '../../contexts';
 import { UsuarioModel } from '../../shared/models/UsuarioModel';
 import { setValuesForms, toasteError, toasteSuccess } from '../../utils';
-import { buscarUsuarios, criarUsuario } from './service';
+import { atualizarUsuario, buscarUsuarios, criarUsuario } from './service';
 import { Container } from './styles';
 
 const defaultColumns = [
@@ -42,16 +42,28 @@ const Usuarios: React.FC = () => {
     let perfils = [];
     perfils.push(usuarioNovo.perfils);
     usuarioNovo.perfils = perfils;
-    console.log(usuarioNovo)
-    await criarUsuario(usuarioNovo).then(_ => {
-      setLoading();
-      toasteSuccess('Usuário criado com sucesso !');
-      buscarListaUsuarios();
-    }).catch(err => {
-      setLoading();
-      const mensagensErros = err.response.data.mensagens;
-      if (mensagensErros) mensagensErros.map((e: string) => toasteError(e));
-    })
+
+    if (usuarioNovo.id.value !== undefined) {
+      await atualizarUsuario(usuarioNovo).then(_ => {
+        setLoading();
+        toasteSuccess('Usuário atualizado com sucesso !');
+        buscarListaUsuarios();
+      }).catch(err => {
+        setLoading();
+        const mensagensErros = err.response.data.mensagens;
+        if (mensagensErros) mensagensErros.map((e: string) => toasteError(e));
+      });
+    } else {
+      await criarUsuario(usuarioNovo).then(_ => {
+        setLoading();
+        toasteSuccess('Usuário criado com sucesso !');
+        buscarListaUsuarios();
+      }).catch(err => {
+        setLoading();
+        const mensagensErros = err.response.data.mensagens;
+        if (mensagensErros) mensagensErros.map((e: string) => toasteError(e));
+      });
+    }
   }
 
   const editarRegistro = (row: any) => {

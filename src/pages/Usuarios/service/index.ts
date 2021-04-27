@@ -50,3 +50,26 @@ export const criarUsuario = async (user: IUsuario) => {
     }
   })
 }
+
+export const atualizarUsuario = async (user: IUsuario) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const source = CancelToken.source();
+      let response: any = null;
+      setTimeout(() => {
+        if (response == null) {
+          source.cancel();
+        }
+      }, 15000);
+      response = await API.patch('/ecommerce/ecommerce/v1/usuarios', user, { cancelToken: source.token })
+        .then(async atualizado => {
+          resolve(true);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    } catch (error) {
+      reject(error);
+    }
+  })
+}
