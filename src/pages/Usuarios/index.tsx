@@ -42,7 +42,7 @@ const Usuarios: React.FC = () => {
     let perfils = [];
     perfils.push(usuarioNovo.perfils);
     usuarioNovo.perfils = perfils;
-
+    
     if (usuarioNovo.id !== undefined) {
       await atualizarUsuario(usuarioNovo).then(_ => {
         setLoading();
