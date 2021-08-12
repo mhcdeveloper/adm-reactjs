@@ -6,7 +6,7 @@ export const ProdutoModel: Iinput[] = [
         name: 'id',
         type: 'numeric',
         label: "Identificador",
-        placeholder: 'Automático',
+        placeholder: '(Automático)',
         value: undefined,
         required: false,
         visible: false,
@@ -47,8 +47,9 @@ export const ProdutoModel: Iinput[] = [
     {
         id: 'valor_unitario',
         name: 'valor_unitario',
-        label: 'Valor unitário',
-        type: 'numeric',
+        label: 'Valor Unitário',
+        type: 'number',
+        validationType: "number",
         value: undefined,
         required: true,
         visible: true,
@@ -94,17 +95,19 @@ export const ProdutoModel: Iinput[] = [
     {
         id: 'responsavel_cadastro',
         name: 'responsavel_cadastro',
-        label: 'Responsavel Cadast',
+        label: 'Resp Cadastro',
+        placeholder: '(Automático)',
         type: 'text',
         validationType: "string",
         value: undefined,
-        required: true,
+        required: false,
         visible: true,
-        validations: [
-            {
-                type: "required",
-                params: ["Campo Responsável cadastro é obrigatório"]
-            },
-        ]
+        disabled: true,
+        // validations: [
+        //     {
+        //         type: "required",
+        //         params: ["Campo Responsável Cadastro é obrigatório"]
+        //     },
+        // ]
     },
 ]

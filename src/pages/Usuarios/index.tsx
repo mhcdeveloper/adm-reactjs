@@ -13,7 +13,7 @@ const defaultColumns = [
   { title: "Código", field: "id", align: "left" },
   { title: "Nome", field: "nome", align: "left" },
   { title: "E-mail", field: "email", align: "left" },
-  { title: "Data de Registro", field: "dtRegistro", align: "left" },
+  { title: "Data de Registro", field: "data_hora_cadastro", align: "left" },
   { title: "Ações", field: "action", align: "center" }
 ]
 
@@ -78,13 +78,17 @@ const Usuarios: React.FC = () => {
     console.log(row)
   }
 
+  const handleCloseForm = () => {
+    setShowForm(false);
+  }
+
   return (
     <Container>
       {showForm ?
         <Forms
           onSubmit={handleForm}
           inputs={formModel}
-          handleClose={() => setShowForm(false)}
+          handleClose={() => handleCloseForm()}
           label="Formulário do Usuário" />
         :
         <DataGrid

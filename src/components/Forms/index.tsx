@@ -74,6 +74,11 @@ const Forms: React.FC<Props> = ({ inputs, label, onSubmit, handleClose }) => {
         })
     }
 
+    const handleCloseResetForm = () => {
+        formRef.current?.reset();
+        handleClose();
+    }
+
     return (
         <Container>
             <Content>
@@ -99,7 +104,7 @@ const Forms: React.FC<Props> = ({ inputs, label, onSubmit, handleClose }) => {
                         size="0.5rem"
                         color={Colors.white}
                         background={Colors.secondary}
-                        onSubmit={() => handleClose()} />
+                        onSubmit={() => handleCloseResetForm()} />
                 </Form>
             </Content>
         </Container>

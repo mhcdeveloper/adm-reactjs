@@ -6,7 +6,7 @@ export const UsuarioModel: Iinput[] = [
         name: 'id',
         type: 'numeric',
         label: "Identificador",
-        placeholder: 'Automático',
+        placeholder: '(Automático)',
         value: undefined,
         required: false,
         visible: false,

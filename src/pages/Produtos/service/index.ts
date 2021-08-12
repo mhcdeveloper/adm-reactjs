@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import { API } from '../../../services/api';
 import { IProduto } from '../../../shared/types/Produto';
+import { getUserToStorage } from '../../../utils';
 
 const CancelToken = axios.CancelToken;
 
@@ -38,6 +39,9 @@ export const criarProduto = async (produto: IProduto) => {
           source.cancel();
         }
       }, 15000);
+
+      let user = getUserToStorage();
+      console.log(user)
       response = await API.post('/ecommerce/v1/produtos', produto, { cancelToken: source.token })
         .then(async criado => {
           resolve(true);
