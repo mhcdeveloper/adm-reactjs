@@ -23,7 +23,6 @@ interface Props {
 }
 
 const Forms: React.FC<Props> = ({ inputs, label, onSubmit, handleClose }) => {
-    console.log(inputs)
     const formRef = useRef<FormHandles>(null);
 
     const handleSubmit: SubmitHandler<FormData> = async (data: any) => {
@@ -48,16 +47,16 @@ const Forms: React.FC<Props> = ({ inputs, label, onSubmit, handleClose }) => {
     };
 
     const renderInputs = () => {
-        let visibleInputs = inputs.filter(input => input.visible === true);
-        return visibleInputs.map((input: Iinput, index: number) => {
+        return inputs.map((input: Iinput, index: number) => {
             if (input.type === 'select') {
+                let defaulValue = input.value != undefined && {...input.value[0], label: input.value[0].nome};
                 return (
                     <AsyncSelect
                         key={index}
                         name={input.name}
                         placeholder={input.placeholder}
                         options={input.options}
-                        defaultValue={input.value}
+                        defaultValue={defaulValue}
                     />
                 )
             }
@@ -69,7 +68,8 @@ const Forms: React.FC<Props> = ({ inputs, label, onSubmit, handleClose }) => {
                     required={input.required}
                     type={input.type}
                     defaultValue={input.value}
-                    placeholder={input.placeholder} />
+                    placeholder={input.placeholder} 
+                    disabled={input.disabled} />                    
             )
         })
     }

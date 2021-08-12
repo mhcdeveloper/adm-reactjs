@@ -43,11 +43,12 @@ const Usuarios: React.FC = () => {
     perfils.push(usuarioNovo.perfils);
     usuarioNovo.perfils = perfils;
 
-    if (usuarioNovo.id.value !== undefined) {
+    if (usuarioNovo.id !== undefined) {
       await atualizarUsuario(usuarioNovo).then(_ => {
         setLoading();
         toasteSuccess('Usuário atualizado com sucesso !');
         buscarListaUsuarios();
+        setShowForm(false);
       }).catch(err => {
         setLoading();
         const mensagensErros = err.response.data.mensagens;
@@ -58,6 +59,7 @@ const Usuarios: React.FC = () => {
         setLoading();
         toasteSuccess('Usuário criado com sucesso !');
         buscarListaUsuarios();
+        setShowForm(false);
       }).catch(err => {
         setLoading();
         const mensagensErros = err.response.data.mensagens;

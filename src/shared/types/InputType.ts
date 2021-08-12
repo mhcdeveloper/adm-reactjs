@@ -9,6 +9,7 @@ export interface Iinput {
     textValid?: string;
     placeholder?: string;
     validationType?: string;
-    validations?: any
-    options?: any
+    validations?: any;
+    options?: any;
+    disabled?: boolean;
 }

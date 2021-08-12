@@ -22,7 +22,7 @@ export const login = async (user: IUserLogin) => {
                     source.cancel();
                 }
             }, 15000);
-            response = await API.post('/mhc-auth/oauth/token',
+            response = await API.post('/oauth/token',
                 data,
                 {
                     cancelToken: source.token,

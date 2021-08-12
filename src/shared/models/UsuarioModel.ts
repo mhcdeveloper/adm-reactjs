@@ -5,9 +5,12 @@ export const UsuarioModel: Iinput[] = [
         id: 'id',
         name: 'id',
         type: 'numeric',
+        label: "Identificador",
+        placeholder: 'Automático',
         value: undefined,
         required: false,
-        visible: false
+        visible: false,
+        disabled: true
     },
     {
         id: 'nome',

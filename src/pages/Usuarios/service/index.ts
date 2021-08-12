@@ -15,7 +15,7 @@ export const buscarUsuarios = () => {
           source.cancel();
         }
       }, 15000);
-      response = await API.get('/ecommerce/ecommerce/v1/usuarios/', { cancelToken: source.token })
+      response = await API.get('/ecommerce/v1/usuarios/', { cancelToken: source.token })
         .then(async dados => {
           resolve(dados.data);
         })
@@ -38,7 +38,7 @@ export const criarUsuario = async (user: IUsuario) => {
           source.cancel();
         }
       }, 15000);
-      response = await API.post('/ecommerce/ecommerce/v1/usuarios', user, { cancelToken: source.token })
+      response = await API.post('/ecommerce/v1/usuarios', user, { cancelToken: source.token })
         .then(async criado => {
           resolve(true);
         })
@@ -61,7 +61,7 @@ export const atualizarUsuario = async (user: IUsuario) => {
           source.cancel();
         }
       }, 15000);
-      response = await API.patch('/ecommerce/ecommerce/v1/usuarios', user, { cancelToken: source.token })
+      response = await API.patch('/ecommerce/v1/usuarios', user, { cancelToken: source.token })
         .then(async atualizado => {
           resolve(true);
         })

@@ -9,9 +9,9 @@ interface Props extends ReactSelectProps {
 }
 
 const AsyncSelect: React.FC<Props> = ({ name, ...rest }) => {
-  const { fieldName, defaultValue, registerField, error } = useField(name);
+  const { fieldName, registerField, error } = useField(name);
   const selectRef = useRef(null);
-
+ 
   useEffect(() => {
     registerField({
       name: fieldName,
@@ -28,7 +28,7 @@ const AsyncSelect: React.FC<Props> = ({ name, ...rest }) => {
 
   return (
       <Container>
-          <ReactSelect ref={selectRef} defaultValue={defaultValue} {...rest} />
+          <ReactSelect ref={selectRef} {...rest} />
           { error && <Error>{error}</Error>}
       </Container>
   );
