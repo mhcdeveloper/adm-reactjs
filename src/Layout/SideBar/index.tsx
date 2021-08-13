@@ -18,12 +18,6 @@ const data = [
         icon: "fas fa-images"
     },
     {
-        id: 3,
-        label: "Colaboradores",
-        rota: { pathname: "/colaboradores", state: "Colaboradores" },
-        icon: "fas fa-address-card"
-    },
-    {
         id: 4,
         label: "Parceiros",
         rota: { pathname: "/parceiros", state: "Parceiros" },

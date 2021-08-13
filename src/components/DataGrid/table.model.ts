@@ -3,8 +3,8 @@ export interface IDataGrid {
     columns: any;
     rows: any;
     edit?: any;
-    remove?: any
-    showForm?: any
+    remove?: any;
+    showForm?: any;
 }
 
 export interface ITableHeader {

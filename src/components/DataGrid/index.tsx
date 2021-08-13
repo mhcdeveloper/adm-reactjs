@@ -50,11 +50,11 @@ const DataGrid: React.FC<IDataGrid> = ({ label, columns, rows, edit, remove, sho
       </tbody>
     )
   }
-
+  
   return (
     <Container>
       <RowG justify="space-between" marginBottom="0.5rem">
-        <LabelG font="1.8rem">{label}</LabelG>        
+        <LabelG font="1.8rem">{label}</LabelG>
         <BtnTable color={Colors.white} onClick={() => showForm()}>
           <Icon name="fas fa-plus" size="1.5rem" color={Colors.primary} />
           <LabelG font="1.6rem" color={Colors.primary} paddingLeft=".5rem">Adicionar</LabelG>
@@ -64,6 +64,11 @@ const DataGrid: React.FC<IDataGrid> = ({ label, columns, rows, edit, remove, sho
         {renderHeader()}
         {renderBody()}
       </Table>
+      {rows.length == 0 &&
+        <RowG>
+          <LabelG font="1.3rem" marginTop="1.2rem">Nenhum registro encontrado</LabelG>
+        </RowG>
+      }
     </Container>
   );
 }

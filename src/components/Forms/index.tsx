@@ -49,7 +49,7 @@ const Forms: React.FC<Props> = ({ inputs, label, onSubmit, handleClose }) => {
     const renderInputs = () => {
         return inputs.map((input: Iinput, index: number) => {
             if (input.type === 'select') {
-                let defaulValue = input.value != undefined && {...input.value[0], label: input.value[0].nome};
+                let defaulValue = input.value;
                 return (
                     <AsyncSelect
                         key={index}

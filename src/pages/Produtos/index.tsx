@@ -16,7 +16,6 @@ const defaultColumns = [
   { title: "Valor Unitário", field: "valor_unitario", align: "left" },
   { title: "Categoria Produto", field: "categoria_produto", align: "left" },
   { title: "Fornecedor", field: "nome_fornecedor", align: "left" },
-  { title: "Resp Cadastro", field: "responsavel_cadastro", align: "left" },
   { title: "Data de Registro", field: "data_hora_cadastro", align: "left" },
   { title: "Ações", field: "action", align: "center" }
 ]
